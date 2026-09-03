@@ -1,0 +1,13 @@
+{
+  "page": {
+    "id": "kctbh9vrtdwd",
+    "name": "GitHub",
+    "url": "https://www.githubstatus.com",
+    "time_zone": "Etc/UTC",
+    "updated_at": "2026-09-03T19:28:46.884Z"
+  },
+  "status": {
+    "indicator": "major",
+    "description": "Partial System Outage"
+  }
+}

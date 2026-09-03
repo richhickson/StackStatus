@@ -1,0 +1,11 @@
+{
+  "id": "anthropic",
+  "name": "Anthropic",
+  "platform": "statuspage",
+  "baseURL": "https://status.claude.com",
+  "incidentURL": "https://status.claude.com",
+  "probes": [
+    { "type": "https_head", "url": "https://api.anthropic.com/" }
+  ],
+  "notes": "status.anthropic.com redirects here since 2026."
+}

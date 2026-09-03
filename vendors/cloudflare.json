@@ -1,0 +1,11 @@
+{
+  "id": "cloudflare",
+  "name": "Cloudflare",
+  "platform": "statuspage",
+  "baseURL": "https://www.cloudflarestatus.com",
+  "incidentURL": "https://www.cloudflarestatus.com",
+  "probes": [
+    { "type": "https_head", "url": "https://1.1.1.1/" },
+    { "type": "dns", "host": "cloudflare.com", "resolver": "1.1.1.1" }
+  ]
+}
