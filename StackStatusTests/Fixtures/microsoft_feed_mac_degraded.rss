@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Microsoft Admin Center Status</title>
+    <link>https://status.cloud.microsoft/</link>
+    <description>Microsoft Admin Center Status</description>
+    <lastBuildDate>Thu, 03 Sep 2026 20:53:30 Z</lastBuildDate>
+    <item>
+      <guid isPermaLink="false">9f818013-9d0c-4992-b227-27ff6c0dd057</guid>
+      <link>https://status.cloud.microsoft/</link>
+      <title>Users may be unable to access the Microsoft 365 admin center</title>
+      <description>&lt;div&gt;This site is updated when service issues are preventing tenant administrators from accessing Service health in the Microsoft 365 admin center. Alternatively, customers can reference&amp;nbsp;&lt;a target="_blank" href="https://www.twitter.com/MSFT365Status"&gt;https://www.twitter.com/MSFT365Status&lt;/a&gt;&amp;nbsp;for additional insights into widespread, active incidents.&lt;/div&gt;</description>
+      <pubDate>Thu, 03 Sep 2026 20:53:00 Z</pubDate>
+      <status>Service degradation</status>
+    </item>
+  </channel>
+</rss>

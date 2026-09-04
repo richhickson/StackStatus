@@ -1,0 +1,11 @@
+{
+  "id": "github",
+  "name": "GitHub",
+  "platform": "statuspage",
+  "baseURL": "https://www.githubstatus.com",
+  "incidentURL": "https://www.githubstatus.com",
+  "probes": [
+    { "type": "https_head", "url": "https://api.github.com/" },
+    { "type": "tcp", "host": "github.com", "port": 22 }
+  ]
+}

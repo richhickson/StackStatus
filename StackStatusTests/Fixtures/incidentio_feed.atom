@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://status.openai.com/</id>
+    <title>OpenAI status</title>
+    <updated>2026-09-03T20:51:59.602Z</updated>
+    <generator>incident.io</generator>
+    <link rel="alternate" href="https://status.openai.com/"/>
+    <subtitle>OpenAI status page updates</subtitle>
+    <icon>https://storage.googleapis.com/incident-io-status-page-logos/01H537TKYPX5W42WRCKR1AGPFT/openai-1/v0bc3jd3.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Elevated errors across ChatGPT and Codex]]></title>
+        <id>https://status.openai.com//incidents/01M1KWEDH417T2CF44YYHZDFCR</id>
+        <link href="https://status.openai.com//incidents/01M1KWEDH417T2CF44YYHZDFCR"/>
+        <updated>2026-09-03T16:55:49.046Z</updated>
+        <summary type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>The issue causing elevated errors across ChatGPT and Codex has been resolved.
+
+Some Codex remote control users may need to pair their mobile device again following this incident.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>File uploads (Operational)</li>
+<li>ChatGPT Atlas (Operational)</li>
+<li>CLI (Operational)</li>
+<li>ChatGPT Work (Operational)</li>
+<li>Connectors/Apps (Operational)</li>
+<li>Login (Operational)</li>
+<li>Image Generation (Operational)</li>
+<li>Agent (Operational)</li>
+<li>Codex Web (Operational)</li>
+<li>Codex in ChatGPT Desktop (Operational)</li>
+<li>Codex API (Operational)</li>
+<li>Voice mode (Operational)</li>
+<li>Deep Research (Operational)</li>
+<li>VS Code extension (Operational)</li>
+<li>Sites (Operational)</li>
+<li>Search (Operational)</li>
+<li>Conversations (Operational)</li>
+<li>Compliance API (Operational)</li>
+<li>GPTs (Operational)</li>
+          </ul>]]></summary>
+        <content type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>The issue causing elevated errors across ChatGPT and Codex has been resolved.
+
+Some Codex remote control users may need to pair their mobile device again following this incident.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>File uploads (Operational)</li>
+<li>ChatGPT Atlas (Operational)</li>
+<li>CLI (Operational)</li>
+<li>ChatGPT Work (Operational)</li>
+<li>Connectors/Apps (Operational)</li>
+<li>Login (Operational)</li>
+<li>Image Generation (Operational)</li>
+<li>Agent (Operational)</li>
+<li>Codex Web (Operational)</li>
+<li>Codex in ChatGPT Desktop (Operational)</li>
+<li>Codex API (Operational)</li>
+<li>Voice mode (Operational)</li>
+<li>Deep Research (Operational)</li>
+<li>VS Code extension (Operational)</li>
+<li>Sites (Operational)</li>
+<li>Search (Operational)</li>
+<li>Conversations (Operational)</li>
+<li>Compliance API (Operational)</li>
+<li>GPTs (Operational)</li>
+          </ul>]]></content>
+    </entry>
+<entry>
+        <title type="html"><![CDATA[ChatGPT Work Mode High Error Rates]]></title>
+        <id>https://status.openai.com//incidents/01M1J99EDCYED5GP2W8GZ3N2NA</id>
+        <link href="https://status.openai.com//incidents/01M1J99EDCYED5GP2W8GZ3N2NA"/>
+        <updated>2026-09-03T00:10:45.629Z</updated>
+        <summary type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>All impacted services have now fully recovered.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>Voice mode (Operational)</li>
+<li>Search (Operational)</li>
+<li>Connectors/Apps (Operational)</li>
+<li>ChatGPT Atlas (Operational)</li>
+<li>Sites (Operational)</li>
+<li>File uploads (Operational)</li>
+<li>Conversations (Operational)</li>
+<li>Agent (Operational)</li>
+<li>ChatGPT Work (Operational)</li>
+<li>GPTs (Operational)</li>
+<li>Deep Research (Operational)</li>
+<li>Codex in ChatGPT Desktop (Operational)</li>
+<li>Login (Operational)</li>
+<li>Compliance API (Operational)</li>
+<li>Image Generation (Operational)</li>
+          </ul>]]></summary>
+        <content type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>All impacted services have now fully recovered.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>Voice mode (Operational)</li>
+<li>Search (Operational)</li>
+<li>Connectors/Apps (Operational)</li>
+<li>ChatGPT Atlas (Operational)</li>
+<li>Sites (Operational)</li>
+<li>File uploads (Operational)</li>
+<li>Conversations (Operational)</li>
+<li>Agent (Operational)</li>
+<li>ChatGPT Work (Operational)</li>
+<li>GPTs (Operational)</li>
+<li>Deep Research (Operational)</li>
+<li>Codex in ChatGPT Desktop (Operational)</li>
+<li>Login (Operational)</li>
+<li>Compliance API (Operational)</li>
+<li>Image Generation (Operational)</li>
+          </ul>]]></content>
+    </entry>
+<entry>
+        <title type="html"><![CDATA[Elevated errors creating new accounts]]></title>
+        <id>https://status.openai.com//incidents/01M1HN7GRR6FJNWFVX2F8QMA3R</id>
+        <link href="https://status.openai.com//incidents/01M1HN7GRR6FJNWFVX2F8QMA3R"/>
+        <updated>2026-09-02T18:45:12.264Z</updated>
+        <summary type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>The issue affecting new account creation has been resolved.]]></summary>
+        <content type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>The issue affecting new account creation has been resolved.]]></content>
+    </entry>
+<entry>
+        <title type="html"><![CDATA[Elevated latency in the Responses API]]></title>
+        <id>https://status.openai.com//incidents/01M1CYZDD84XD0H56XNEV2PT98</id>
+        <link href="https://status.openai.com//incidents/01M1CYZDD84XD0H56XNEV2PT98"/>
+        <updated>2026-09-01T19:05:46.393Z</updated>
+        <summary type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>All impacted services have now fully recovered.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>Responses (Operational)</li>
+          </ul>]]></summary>
+        <content type="html"><![CDATA[<b>Status: Resolved</b><br/><br/>All impacted services have now fully recovered.<br/><br/><b>Affected components</b>
+          <ul>
+          <li>Responses (Operational)</li>
+          </ul>]]></content>
+    </entry>
+</feed>

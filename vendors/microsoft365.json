@@ -1,0 +1,13 @@
+{
+  "id": "microsoft365",
+  "name": "Microsoft 365",
+  "platform": "feed",
+  "baseURL": "https://status.cloud.microsoft",
+  "incidentURL": "https://status.cloud.microsoft",
+  "feedURL": "https://status.cloud.microsoft/api/feed/mac",
+  "probes": [
+    { "type": "https_head", "url": "https://outlook.office365.com/" },
+    { "type": "https_head", "url": "https://login.microsoftonline.com/" }
+  ],
+  "notes": "Microsoft publishes no anonymous JSON for tenant service health. This feed only reports issues that stop admins reaching Service health in the admin center. See docs/ARCHITECTURE.md."
+}

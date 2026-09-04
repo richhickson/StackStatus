@@ -1,0 +1,10 @@
+{
+  "id": "openai",
+  "name": "OpenAI",
+  "platform": "incidentio",
+  "baseURL": "https://status.openai.com",
+  "incidentURL": "https://status.openai.com",
+  "probes": [
+    { "type": "https_head", "url": "https://api.openai.com/" }
+  ]
+}

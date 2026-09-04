@@ -1,0 +1,11 @@
+{
+  "id": "vercel",
+  "name": "Vercel",
+  "platform": "statuspage",
+  "baseURL": "https://www.vercel-status.com",
+  "incidentURL": "https://www.vercel-status.com",
+  "probes": [
+    { "type": "https_head", "url": "https://api.vercel.com/" },
+    { "type": "dns", "host": "vercel.com" }
+  ]
+}

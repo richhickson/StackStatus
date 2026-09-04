@@ -1,0 +1,14 @@
+{
+  "page_title": "OpenAI",
+  "page_url": "https://status.openai.com/",
+  "ongoing_incidents": [],
+  "in_progress_maintenances": [
+    {
+      "id": "01MAINT",
+      "name": "Scheduled database maintenance",
+      "status": "in_progress",
+      "affected_components": []
+    }
+  ],
+  "scheduled_maintenances": []
+}

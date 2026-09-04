@@ -1,0 +1,494 @@
+{
+  "page_title": "OpenAI",
+  "page_url": "https://status.openai.com/",
+  "ongoing_incidents": [
+    {
+      "updates": [
+        {
+          "published_at": "2026-09-03T14:43:00Z",
+          "id": "01M1KWEDH4HZZS0RR8FK6AFNY8",
+          "message": {
+            "feature_set": "mrkdwn",
+            "text_node": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "We are investigating the issue for the listed services."
+                    }
+                  ]
+                }
+              ]
+            },
+            "markdown": "We are investigating the issue for the listed services.",
+            "schema_version": "v1.0.0"
+          },
+          "message_string": "We are investigating the issue for the listed services.",
+          "to_status": "investigating",
+          "component_statuses": [
+            {
+              "component_id": "01KMKFAMWKNQ84Z1766MV08ZDE",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSFK5QX36ZRW0TW0ZV0ZYFXQ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JVCV8YSWZFRSM1G5CVP253SK",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01K6TVGGGDCP0PPGCHXAG3AQX8",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMKFAMWKQ81YWSE1Z18R6VHR",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXG1YMQPPCPCQX3MPA2",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGGT5SR5DB9J7GYY48",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSG1XMJ9RVJJQ0E85NVSJ2AZ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KX45G1SH21AX5DT93D4HMF0P",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXG1S2D9V65P1ZZTD94",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JNKS9D9S72PMP1938PVFFQN4",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JQ7EKW990MSPSWVXC7VPV2ZJ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSYVYQSWMJ9QG35XHP08BHA7",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01K8C008QVXHA6JX98PAS42VPD",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGKKP51D4DEJ2HZJ8Q",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGV1T5GT2M9XA83XNG",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMP3KP5M8X0EBTVW6KN327EE",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMP3KP5MGE23B80K1EK4S8PV",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KX45G1SHQQ9DTAX9S4W7FV8G",
+              "status": "degraded_performance"
+            }
+          ],
+          "automated_update": false
+        },
+        {
+          "published_at": "2026-09-03T15:17:00Z",
+          "id": "01M1KZE5EW98D4TP0QC73DNYC2",
+          "message": {
+            "feature_set": "mrkdwn",
+            "text_node": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "We have applied the mitigation and are monitoring the recovery."
+                    }
+                  ]
+                }
+              ]
+            },
+            "markdown": "We have applied the mitigation and are monitoring the recovery.",
+            "schema_version": "v1.0.0"
+          },
+          "message_string": "We have applied the mitigation and are monitoring the recovery.",
+          "to_status": "monitoring",
+          "component_statuses": [
+            {
+              "component_id": "01JMXBNJXG1YMQPPCPCQX3MPA2",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JQ7EKW990MSPSWVXC7VPV2ZJ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMP3KP5MGE23B80K1EK4S8PV",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGKKP51D4DEJ2HZJ8Q",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGV1T5GT2M9XA83XNG",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSG1XMJ9RVJJQ0E85NVSJ2AZ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSYVYQSWMJ9QG35XHP08BHA7",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KX45G1SH21AX5DT93D4HMF0P",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KX45G1SHQQ9DTAX9S4W7FV8G",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMKFAMWKNQ84Z1766MV08ZDE",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXGGT5SR5DB9J7GYY48",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JNKS9D9S72PMP1938PVFFQN4",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JSFK5QX36ZRW0TW0ZV0ZYFXQ",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JVCV8YSWZFRSM1G5CVP253SK",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01K6TVGGGDCP0PPGCHXAG3AQX8",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01K8C008QVXHA6JX98PAS42VPD",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMKFAMWKQ81YWSE1Z18R6VHR",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01JMXBNJXG1S2D9V65P1ZZTD94",
+              "status": "degraded_performance"
+            },
+            {
+              "component_id": "01KMP3KP5M8X0EBTVW6KN327EE",
+              "status": "degraded_performance"
+            }
+          ],
+          "automated_update": false
+        }
+      ],
+      "component_impacts": [
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4C5NZ7YD182961NMV",
+          "component_id": "01JMXBNJXG1S2D9V65P1ZZTD94",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4GTJ2ADQS96FMV7HF",
+          "component_id": "01JMXBNJXG1YMQPPCPCQX3MPA2",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4JPQ78EBH94GR4GMT",
+          "component_id": "01JMXBNJXGGT5SR5DB9J7GYY48",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4M91KATSPCS2JT54M",
+          "component_id": "01JMXBNJXGKKP51D4DEJ2HZJ8Q",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4V2097HRWGAQ70EN8",
+          "component_id": "01JMXBNJXGV1T5GT2M9XA83XNG",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH451RKZ5AP9VN23TVH",
+          "component_id": "01JNKS9D9S72PMP1938PVFFQN4",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4CWWJTQ79C3JBMYY6",
+          "component_id": "01JQ7EKW990MSPSWVXC7VPV2ZJ",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH45D6DRX2395R9P62S",
+          "component_id": "01JSFK5QX36ZRW0TW0ZV0ZYFXQ",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4RBV4JS8304JSS3KP",
+          "component_id": "01JSG1XMJ9RVJJQ0E85NVSJ2AZ",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4EBFVEX7ZG16MJ4M8",
+          "component_id": "01JSYVYQSWMJ9QG35XHP08BHA7",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4PBMQTE9KHTTGKYR7",
+          "component_id": "01JVCV8YSWZFRSM1G5CVP253SK",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4GK1M89V07FWWZ8CE",
+          "component_id": "01K6TVGGGDCP0PPGCHXAG3AQX8",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4PR8WBMSX0G1AM750",
+          "component_id": "01K8C008QVXHA6JX98PAS42VPD",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH42JZJ09G84CM45C06",
+          "component_id": "01KMKFAMWKNQ84Z1766MV08ZDE",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4W84YEJTGF6N4KX0H",
+          "component_id": "01KMKFAMWKQ81YWSE1Z18R6VHR",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH48S075WNSS73QJVYV",
+          "component_id": "01KMP3KP5M8X0EBTVW6KN327EE",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4R0T737GXPMDDC5J0",
+          "component_id": "01KMP3KP5MGE23B80K1EK4S8PV",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH41YA3C2WYWGJSEZCF",
+          "component_id": "01KX45G1SH21AX5DT93D4HMF0P",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "id": "01M1KWEDH4TW40QK1W97NZSF0B",
+          "component_id": "01KX45G1SHQQ9DTAX9S4W7FV8G",
+          "status_page_incident_id": "01M1KWEDH417T2CF44YYHZDFCR",
+          "status": "degraded_performance"
+        }
+      ],
+      "status_summaries": [
+        {
+          "start_at": "2026-09-03T14:43:00Z",
+          "end_at": "2026-09-03T14:58:23.907Z",
+          "worst_component_status": "operational"
+        },
+        {
+          "start_at": "2026-09-03T14:58:23.907Z",
+          "end_at": "2026-09-03T15:17:00Z",
+          "worst_component_status": "degraded_performance"
+        },
+        {
+          "start_at": "2026-09-03T15:17:00Z",
+          "end_at": "2026-09-03T16:55:49.046Z",
+          "worst_component_status": "degraded_performance"
+        }
+      ],
+      "published_at": "2026-09-03T14:58:23.907Z",
+      "id": "01M1KWEDH417T2CF44YYHZDFCR",
+      "status_page_id": "01JMDK9XYNY6RXSED6SDWW50WY",
+      "name": "Elevated errors across ChatGPT and Codex",
+      "status": "investigating",
+      "affected_components": [
+        {
+          "component_id": "01KX45G1SH21AX5DT93D4HMF0P",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JMXBNJXG1YMQPPCPCQX3MPA2",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JMXBNJXGKKP51D4DEJ2HZJ8Q",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JNKS9D9S72PMP1938PVFFQN4",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JSFK5QX36ZRW0TW0ZV0ZYFXQ",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01KMKFAMWKQ81YWSE1Z18R6VHR",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JMXBNJXGV1T5GT2M9XA83XNG",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JSG1XMJ9RVJJQ0E85NVSJ2AZ",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JVCV8YSWZFRSM1G5CVP253SK",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01KMKFAMWKNQ84Z1766MV08ZDE",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01KX45G1SHQQ9DTAX9S4W7FV8G",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JMXBNJXG1S2D9V65P1ZZTD94",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JQ7EKW990MSPSWVXC7VPV2ZJ",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JMXBNJXGGT5SR5DB9J7GYY48",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01JSYVYQSWMJ9QG35XHP08BHA7",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01K6TVGGGDCP0PPGCHXAG3AQX8",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01K8C008QVXHA6JX98PAS42VPD",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01KMP3KP5M8X0EBTVW6KN327EE",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        },
+        {
+          "component_id": "01KMP3KP5MGE23B80K1EK4S8PV",
+          "status": "degraded_performance",
+          "current_status": "degraded_performance"
+        }
+      ],
+      "type": "incident"
+    }
+  ],
+  "in_progress_maintenances": [],
+  "scheduled_maintenances": []
+}
