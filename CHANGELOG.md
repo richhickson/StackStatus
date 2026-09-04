@@ -5,7 +5,7 @@
 First release.
 
 - Atlassian Statuspage, incident.io and generic RSS or Atom adapters.
-- Bundled vendors: Anthropic, Cloudflare, GitHub, Microsoft 365, OpenAI.
+- Bundled vendors: Anthropic, Cloudflare, GitHub, Microsoft 365, OpenAI, Vercel.
 - HTTPS HEAD, TCP and DNS probes per vendor, plus gateway, DNS and internet
   baseline checks, combined into a "them, me, or the internet" verdict.
 - Notifications on incident start, escalation and resolution only, with a two

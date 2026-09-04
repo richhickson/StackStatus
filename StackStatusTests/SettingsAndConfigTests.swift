@@ -140,7 +140,7 @@ final class SettingsAndConfigTests: XCTestCase {
         // The build merges vendors/*.json into the app bundle. This proves the
         // merge ran and every bundled vendor decodes.
         let config = ConfigStore().bundledConfig()
-        XCTAssertEqual(config.vendors.map(\.id), ["anthropic", "cloudflare", "github", "microsoft365", "openai"])
+        XCTAssertEqual(config.vendors.map(\.id), ["anthropic", "cloudflare", "github", "microsoft365", "openai", "vercel"])
         XCTAssertTrue(config.vendors.allSatisfy(\.enabled))
         XCTAssertEqual(config.vendors.first(where: { $0.id == "anthropic" })?.baseURL.host, "status.claude.com")
         XCTAssertEqual(config.vendors.first(where: { $0.id == "openai" })?.platform, .incidentio)

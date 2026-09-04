@@ -89,6 +89,7 @@ Bundled vendors, verified against the live endpoints:
 | GitHub | Statuspage | HEAD api.github.com, TCP github.com:22 |
 | Microsoft 365 | Feed (admin center RSS) | HEAD outlook.office365.com, HEAD login.microsoftonline.com |
 | OpenAI | incident.io | HEAD api.openai.com |
+| Vercel | Statuspage | HEAD api.vercel.com, DNS vercel.com |
 
 Microsoft publishes no anonymous JSON for tenant service health, so the
 bundled entry watches the admin center feed at
@@ -173,7 +174,7 @@ These are design requirements, not aspirations.
 - `Retry-After` is honoured and repeated 429 or 5xx responses from a status
   page back off exponentially, capped at 30 minutes.
 
-Measured with the bundled five vendors at the 5 minute default on a MacBook
+Measured with five bundled vendors at the 5 minute default on a MacBook
 Pro with Apple Silicon, using `Scripts/measure.sh` (ten minutes, then scaled):
 
 | Measure | Result |

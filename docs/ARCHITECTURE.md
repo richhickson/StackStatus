@@ -7,13 +7,14 @@ public but undocumented and may change without notice.
 
 ## 1. Endpoint research
 
-### 1.1 Atlassian Statuspage (Cloudflare, GitHub, Anthropic)
+### 1.1 Atlassian Statuspage (Cloudflare, GitHub, Anthropic, Vercel)
 
 | Vendor | Base URL | Notes |
 |---|---|---|
 | Cloudflare | `https://www.cloudflarestatus.com` | Served by Google Frontend. `summary.json` is about 210 KB because of the very long component list. |
 | GitHub | `https://www.githubstatus.com` | Served by AtlassianEdge behind CloudFront, `cache-control: max-age=10`. |
 | Anthropic | `https://status.claude.com` | `status.anthropic.com` now returns a 301 to `status.claude.com` for every path, so the bundled vendor uses the new host directly. |
+| Vercel | `https://www.vercel-status.com` | AtlassianEdge, weak ETag. `vercel-status.com` without `www` is a 301. Verified 4 September 2026. |
 
 Endpoints, all `GET`, all JSON:
 
