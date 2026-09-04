@@ -1,6 +1,6 @@
 cask "stackstatus" do
   version "0.1.0"
-  sha256 "REPLACE_WITH_SHA256_FROM_RELEASE"
+  sha256 "705b7ca78fc203696406b82a1652e65519588fc632d1072cf4da05783cd7d103"
 
   url "https://github.com/richhickson/StackStatus/releases/download/v#{version}/StackStatus.zip"
   name "StackStatus"
