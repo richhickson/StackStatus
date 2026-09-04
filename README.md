@@ -225,3 +225,7 @@ to end.
 ## Licence
 
 MIT. See [LICENSE](LICENSE).
+
+---
+
+Created by [@richhickson](https://x.com/richhickson)

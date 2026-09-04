@@ -21,6 +21,7 @@ struct PopoverView: View {
                 .padding(.vertical, 8)
             Divider()
             footer
+            credit
         }
         .frame(width: 340)
         .onReceive(ticker) { now = $0 }
@@ -85,6 +86,17 @@ struct PopoverView: View {
         .buttonStyle(.borderless)
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
+    }
+
+    private var credit: some View {
+        HStack {
+            Spacer()
+            Link("Created by @richhickson", destination: URL(string: "https://x.com/richhickson")!)
+                .font(.system(size: 10))
+                .foregroundStyle(.tertiary)
+            Spacer()
+        }
+        .padding(.bottom, 6)
     }
 
     private var lastCheckedText: String {
@@ -160,7 +172,7 @@ struct BaselineRow: View {
     let baseline: BaselineResult?
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 12) {
             BaselineItem(label: "Gateway", result: baseline?.gateway)
             BaselineItem(label: "DNS", result: baseline?.dns)
             BaselineItem(label: "Internet", result: baseline?.internet)
@@ -186,12 +198,15 @@ struct BaselineItem: View {
             }
             Text(label)
                 .font(.system(size: 11))
+                .fixedSize()
             if let latency = result?.latency, result?.ok == true {
                 Text(Formatting.latency(latency))
                     .font(.system(size: 10))
                     .foregroundStyle(.tertiary)
+                    .fixedSize()
             }
         }
+        .lineLimit(1)
         .help(result?.detail ?? "Not checked yet")
     }
 }
