@@ -238,7 +238,32 @@ same location from the app's point of view. Preferences live in the standard
   `curl`. `NSAllowsLocalNetworking` is set in Info.plist so the app can talk
   to it over plain HTTP on 127.0.0.1.
 
-### 2.7 Debounce and notifications
+### 2.7 Self update
+
+Opt in. `UpdateMonitor` follows the `checkForUpdates` setting: while on it
+sends a conditional GET to `api.github.com/repos/richhickson/StackStatus/releases/latest`
+20 seconds after launch and then daily; Check now sends one on demand. A
+release whose tag is numerically newer than `CFBundleShortVersionString`
+shows a banner in the popover.
+
+`UpdateInstaller` downloads `StackStatus.zip` from the release, extracts it
+with `ditto` inside the container, and checks it with the Security framework
+against the requirement `anchor apple generic and certificate leaf[subject.OU]
+= "DFL38M27U3"` with nested code and all architectures, plus a bundle
+identifier and version match.
+
+It then hands the zip to `StackStatusInstaller.xpc`, an embedded XPC service
+that is deliberately not sandboxed. Two facts force this: the sandbox stamps
+every file the app writes with a quarantine flag (`0086`, "created by an
+AppSandbox"), and LaunchServices refuses to execute a bundle carrying that
+flag, even from Finder. Sparkle solves it the same way. The helper extracts
+the zip afresh, runs the same signature and identity checks, strips the
+quarantine attribute, moves the old bundle aside, moves the new one in,
+deletes the old one, and runs `open -n` on the new copy. The app quits when
+the helper replies. The helper accepts connections only from a bundle with
+identifier `com.helpfullyit.stackstatus` signed by the same team.
+
+### 2.8 Debounce and notifications
 
 `VendorTracker` confirms a new state after two consecutive polls, except
 `majorOutage` which is confirmed immediately. `unknown` never confirms, never

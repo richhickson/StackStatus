@@ -12,17 +12,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
     private var store: StateStore!
     private var http: HTTPClient!
     private var scheduler: PollScheduler!
+    private var updateMonitor: UpdateMonitor!
+    private var updateInstaller: UpdateInstaller!
     private var statusItemController: StatusItemController!
     private var popoverController: PopoverController!
     private var settingsWindow: NSWindow?
     private var settingsObservation: Any?
     private var popoverObservation: Any?
+    private var autoInstallObservation: Any?
 
     /// Development aids, ignored unless set in the environment:
     /// STACKSTATUS_DEBUG_INTERVAL=<seconds> overrides the poll interval,
     /// STACKSTATUS_DEBUG_SHOW_POPOVER=1 opens the popover after the first poll,
     /// STACKSTATUS_DEBUG_SNAPSHOT=<file.png> renders the popover to a PNG after
-    /// the first poll and quits (used for the README screenshot).
+    /// the first poll and quits (used for the README screenshot),
+    /// STACKSTATUS_DEBUG_UPDATE_URL points update checks at a local fixture,
+    /// STACKSTATUS_DEBUG_AUTO_INSTALL=1 installs the first update found without a click.
     private static func debugAdjusted(_ poll: PollSettings) -> PollSettings {
         var poll = poll
         if let raw = ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_INTERVAL"], let seconds = TimeInterval(raw), seconds >= 1 {
@@ -39,6 +44,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
         notifier = Notifier(settings: settings)
         store = StateStore(vendors: vendorsModel.vendors, notifier: notifier)
         http = HTTPClient()
+        updateMonitor = UpdateMonitor(settings: settings, http: http)
+        updateInstaller = UpdateInstaller(session: http.session)
+        updateMonitor.start()
 
         let store = self.store!
         scheduler = PollScheduler(
@@ -54,6 +62,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
         popoverController = PopoverController(
             store: store,
             settings: settings,
+            updates: updateMonitor,
+            installer: updateInstaller,
             actions: PopoverActions(
                 refresh: { [weak self] in self?.refreshNow() },
                 openSettings: { [weak self] in self?.openSettings() },
@@ -94,6 +104,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
                         NSApp.terminate(nil)
                     }
                 }
+        }
+
+        if ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_AUTO_INSTALL"] != nil {
+            let installer = updateInstaller!
+            autoInstallObservation = updateMonitor.$available
+                .compactMap { $0 }
+                .first()
+                .receive(on: RunLoop.main)
+                .sink { release in Task { await installer.install(release) } }
         }
 
         if ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_SHOW_POPOVER"] != nil {
@@ -141,6 +160,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
             let root = SettingsView(detector: PlatformDetector(http: http))
                 .environmentObject(settings!)
                 .environmentObject(vendorsModel!)
+                .environmentObject(updateMonitor!)
             let window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 560, height: 520),
                 styleMask: [.titled, .closable, .miniaturizable],

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Opt in update checks (off by default) against the GitHub releases API, and
+  a one click "Update and relaunch" that verifies the Developer ID signature
+  and replaces the app in place through a small unsandboxed installer helper.
+- Vercel bundled vendor.
+
 ## 0.1.0
 
 First release.

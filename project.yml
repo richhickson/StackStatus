@@ -26,6 +26,10 @@ targets:
       - path: StackStatus
         excludes:
           - "Resources/Info.plist"
+      - path: StackStatusInstaller/InstallerProtocol.swift
+    dependencies:
+      - target: StackStatusInstaller
+        embed: true
     info:
       path: StackStatus/Resources/Info.plist
       properties:
@@ -69,6 +73,28 @@ targets:
           - $(DERIVED_FILE_DIR)/vendors.json
         outputFiles:
           - $(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/vendors.json
+  StackStatusInstaller:
+    # Not sandboxed on purpose: a sandboxed process cannot write a launchable
+    # app bundle. See StackStatusInstaller/main.swift. Embedded in the app.
+    type: xpc-service
+    platform: macOS
+    sources:
+      - path: StackStatusInstaller
+      - path: StackStatus/Core/Shared/UpdateVerification.swift
+    info:
+      path: StackStatusInstaller/Info.plist
+      properties:
+        CFBundleName: StackStatusInstaller
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        XPCService:
+          ServiceType: Application
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.helpfullyit.stackstatus.installer
+        PRODUCT_NAME: StackStatusInstaller
+        ENABLE_HARDENED_RUNTIME: "YES"
+        SKIP_INSTALL: "YES"
   StackStatusTests:
     type: bundle.unit-test
     platform: macOS

@@ -198,15 +198,33 @@ poll cycle from a terminal and see exactly what the app sees:
 StackStatus.app/Contents/MacOS/StackStatus --once
 ```
 
+## Updates
+
+Update checks are off by default. Turn on "Check for updates once a day" in
+Settings, or press Check now, and StackStatus sends one `GET` to
+`api.github.com` for the latest release. When a newer version exists the
+popover shows an "Update and relaunch" button. It downloads the signed zip
+from the GitHub release, verifies the Developer ID signature belongs to
+Helpfully IT before anything else happens, swaps the bundle in place and
+relaunches. Anything unsigned or signed by someone else is refused. The swap
+is done by a tiny helper inside the app (`StackStatusInstaller.xpc`) that is
+not sandboxed, because a sandboxed process cannot write an app bundle that
+macOS will launch. The helper does nothing else and only answers the app it
+ships in.
+
 ## Privacy
 
 - Nothing leaves your machine except `GET` and `HEAD` requests to the status
-  pages and probe targets you configure. The app never sends a `POST`.
+  pages and probe targets you configure, plus, only if you turn it on, one
+  `GET` a day to `api.github.com` to check for updates. The app never sends a
+  `POST`.
 - The User-Agent is `StackStatus/<version> (+https://github.com/richhickson/StackStatus)`
   so vendors can see who is asking.
 - No cookies, no URL cache, no analytics, no crash reporting, no update pings.
 - No account. Your vendor list is a JSON file on your disk and nowhere else.
-- App Sandbox is on with only the outgoing network entitlement.
+- App Sandbox is on with only the outgoing network entitlement. The one
+  unsandboxed piece is the installer helper described under Updates, which
+  runs only when you click Update and relaunch.
 
 Vendor status APIs are public but undocumented and may change without notice.
 When one does, the vendor shows as unknown rather than as down, and a fix is a
