@@ -10,6 +10,7 @@ final class MockURLProtocol: URLProtocol {
         var headers: [String: String]
         var body: Data
         var error: Error?
+        var delay: TimeInterval = 0
     }
 
     nonisolated(unsafe) private static var stubs: [URL: Stub] = [:]
@@ -31,8 +32,9 @@ final class MockURLProtocol: URLProtocol {
         stub(URL(string: url)!, status: status, headers: headers, body: body)
     }
 
-    static func stub(_ url: String, status: Int = 200, headers: [String: String] = [:], fixture: String) {
-        stub(url, status: status, headers: headers, body: Fixtures.data(fixture))
+    static func stub(_ url: String, status: Int = 200, headers: [String: String] = [:], fixture: String, delay: TimeInterval = 0) {
+        lock.lock(); defer { lock.unlock() }
+        stubs[URL(string: url)!] = Stub(status: status, headers: headers, body: Fixtures.data(fixture), delay: delay)
     }
 
     static func stubJSON(_ url: String, status: Int = 200, headers: [String: String] = [:], json: String) {
@@ -67,23 +69,42 @@ final class MockURLProtocol: URLProtocol {
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
 
+    private let stopped = NSLock()
+    private var isStopped = false
+
     override func startLoading() {
         Self.record(request)
         guard let stub = Self.lookup(request.url) else {
             client?.urlProtocol(self, didFailWithError: URLError(.cannotConnectToHost))
             return
         }
-        if let error = stub.error {
-            client?.urlProtocol(self, didFailWithError: error)
-            return
+        let deliver: @Sendable () -> Void = { [weak self] in
+            guard let self else { return }
+            self.stopped.lock()
+            let cancelled = self.isStopped
+            self.stopped.unlock()
+            guard !cancelled else { return }
+            if let error = stub.error {
+                self.client?.urlProtocol(self, didFailWithError: error)
+                return
+            }
+            let response = HTTPURLResponse(url: self.request.url!, statusCode: stub.status, httpVersion: "HTTP/1.1", headerFields: stub.headers)!
+            self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            if self.request.httpMethod != "HEAD" { self.client?.urlProtocol(self, didLoad: stub.body) }
+            self.client?.urlProtocolDidFinishLoading(self)
         }
-        let response = HTTPURLResponse(url: request.url!, statusCode: stub.status, httpVersion: "HTTP/1.1", headerFields: stub.headers)!
-        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        if request.httpMethod != "HEAD" { client?.urlProtocol(self, didLoad: stub.body) }
-        client?.urlProtocolDidFinishLoading(self)
+        if stub.delay > 0 {
+            DispatchQueue.global().asyncAfter(deadline: .now() + stub.delay, execute: deliver)
+        } else {
+            deliver()
+        }
     }
 
-    override func stopLoading() {}
+    override func stopLoading() {
+        stopped.lock()
+        isStopped = true
+        stopped.unlock()
+    }
 }
 
 enum Fixtures {

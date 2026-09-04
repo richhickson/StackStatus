@@ -38,6 +38,8 @@ targets:
         LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
         NSHumanReadableCopyright: "Copyright 2026 Rich Hickson, Helpfully IT. MIT licence."
         NSPrincipalClass: NSApplication
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
     entitlements:
       path: StackStatus/Resources/StackStatus.entitlements
       properties:
