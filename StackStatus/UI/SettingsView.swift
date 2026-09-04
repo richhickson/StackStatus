@@ -19,6 +19,7 @@ struct SettingsView: View {
 
 struct GeneralSettingsView: View {
     @EnvironmentObject private var settings: AppSettings
+    @EnvironmentObject private var updates: UpdateMonitor
     @State private var launchAtLogin = LoginItem.isEnabled
     @State private var loginError: String?
 
@@ -59,6 +60,21 @@ struct GeneralSettingsView: View {
                 if let loginError {
                     Text(loginError).font(.caption).foregroundStyle(.red)
                 }
+            }
+
+            Section("Updates") {
+                Toggle("Check for updates once a day", isOn: $settings.checkForUpdates)
+                HStack {
+                    Button("Check now") { Task { await updates.checkNow() } }
+                        .disabled(updates.isChecking)
+                    Text(updates.statusText)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
+                Text("Off by default. When on, the only thing sent is one GET to api.github.com for the latest release. Installing an update downloads the signed zip from GitHub, checks the Developer ID signature, then replaces the app in its folder and relaunches.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
             Section("Baseline checks") {

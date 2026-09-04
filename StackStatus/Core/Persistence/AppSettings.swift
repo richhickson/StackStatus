@@ -18,6 +18,7 @@ final class AppSettings: ObservableObject {
         static let textBadge = "showTextBadge"
         static let internetURL = "baselineInternetURL"
         static let dnsHost = "baselineDNSHost"
+        static let checkForUpdates = "checkForUpdatesEnabled"
     }
 
     private let defaults: UserDefaults
@@ -31,6 +32,8 @@ final class AppSettings: ObservableObject {
     @Published var showTextBadge: Bool { didSet { defaults.set(showTextBadge, forKey: Key.textBadge) } }
     @Published var internetURL: String { didSet { defaults.set(internetURL, forKey: Key.internetURL) } }
     @Published var dnsHost: String { didSet { defaults.set(dnsHost, forKey: Key.dnsHost) } }
+    /// Off by default: the brief allows no update pings without explicit consent.
+    @Published var checkForUpdates: Bool { didSet { defaults.set(checkForUpdates, forKey: Key.checkForUpdates) } }
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
@@ -43,6 +46,7 @@ final class AppSettings: ObservableObject {
         showTextBadge = defaults.object(forKey: Key.textBadge) as? Bool ?? false
         internetURL = defaults.string(forKey: Key.internetURL) ?? AppSettings.defaultInternetURL
         dnsHost = defaults.string(forKey: Key.dnsHost) ?? AppSettings.defaultDNSHost
+        checkForUpdates = defaults.object(forKey: Key.checkForUpdates) as? Bool ?? false
     }
 
     var pollSettings: PollSettings {

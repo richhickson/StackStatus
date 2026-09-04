@@ -4,6 +4,8 @@ import SwiftUI
 struct PopoverView: View {
     @EnvironmentObject private var store: StateStore
     @EnvironmentObject private var settings: AppSettings
+    @EnvironmentObject private var updates: UpdateMonitor
+    @EnvironmentObject private var installer: UpdateInstaller
     let actions: PopoverActions
 
     /// Re-renders relative times once a minute while the popover is open.
@@ -13,6 +15,12 @@ struct PopoverView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             header
+            if let release = updates.available {
+                Divider()
+                UpdateBanner(release: release, installer: installer)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+            }
             Divider()
             vendorList
             Divider()
@@ -104,6 +112,59 @@ struct PopoverView: View {
         var text = "Checked \(Formatting.ago(checked, now: now))"
         if store.lastCycleTimedOut { text += ", some checks timed out" }
         return text
+    }
+}
+
+struct UpdateBanner: View {
+    let release: ReleaseInfo
+    @ObservedObject var installer: UpdateInstaller
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "arrow.down.circle.fill")
+                .foregroundStyle(Color.accentColor)
+            VStack(alignment: .leading, spacing: 1) {
+                Text("Version \(release.version) is available")
+                    .font(.system(size: 12, weight: .medium))
+                Text(statusText)
+                    .font(.system(size: 10))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+            Spacer()
+            if installer.isBusy {
+                ProgressView().controlSize(.small)
+            } else {
+                Button(buttonTitle) {
+                    if case .failed = installer.state { installer.reset() }
+                    Task { await installer.install(release) }
+                }
+                .controlSize(.small)
+                Button {
+                    NSWorkspace.shared.open(release.pageURL)
+                } label: {
+                    Image(systemName: "arrow.up.right.square")
+                }
+                .buttonStyle(.borderless)
+                .help("Open the release page")
+            }
+        }
+    }
+
+    private var buttonTitle: String {
+        if case .failed = installer.state { return "Retry" }
+        return "Update and relaunch"
+    }
+
+    private var statusText: String {
+        switch installer.state {
+        case .idle: return "Downloads, verifies the signature, replaces the app and relaunches."
+        case .downloading: return "Downloading"
+        case .verifying: return "Verifying signature"
+        case .installing: return "Installing"
+        case .relaunching: return "Relaunching"
+        case .failed(let message): return message
+        }
     }
 }
 

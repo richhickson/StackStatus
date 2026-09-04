@@ -13,13 +13,15 @@ struct PopoverActions {
 final class PopoverController {
     let popover: NSPopover
 
-    init(store: StateStore, settings: AppSettings, actions: PopoverActions) {
+    init(store: StateStore, settings: AppSettings, updates: UpdateMonitor, installer: UpdateInstaller, actions: PopoverActions) {
         popover = NSPopover()
         popover.behavior = .transient
         popover.animates = true
         let root = PopoverView(actions: actions)
             .environmentObject(store)
             .environmentObject(settings)
+            .environmentObject(updates)
+            .environmentObject(installer)
         let host = NSHostingController(rootView: root)
         host.sizingOptions = [.preferredContentSize]
         popover.contentViewController = host
