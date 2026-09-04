@@ -1,0 +1,18 @@
+# Local notes and briefs
+info/
+
+# Build artifacts
+build/
+dist/
+.build/
+DerivedData/
+
+# Xcode
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+*.swp
+*~
