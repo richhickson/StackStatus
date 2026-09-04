@@ -216,7 +216,28 @@ and keeps its last known state.
 | On battery, no active incident | user setting times 3 |
 | System asleep | paused; one immediate poll on wake |
 
-### 2.5 Debounce and notifications
+### 2.5 Files on disk
+
+The app is sandboxed, so Application Support resolves inside its container:
+`~/Library/Containers/com.helpfullyit.stackstatus/Data/Library/Application Support/StackStatus/vendors.json`.
+The brief's `~/Library/Application Support/StackStatus/vendors.json` is the
+same location from the app's point of view. Preferences live in the standard
+`com.helpfullyit.stackstatus` defaults domain.
+
+### 2.6 Debug aids
+
+- `StackStatus --once` runs one poll cycle headlessly, prints every vendor's
+  state, verdict, probes and the baseline, and exits.
+- `STACKSTATUS_DEBUG_INTERVAL=<seconds>` overrides the poll interval.
+- `STACKSTATUS_DEBUG_SHOW_POPOVER=1` opens the popover after the first poll.
+- `STACKSTATUS_DEBUG_SNAPSHOT=<name.png>` renders the popover to a PNG in the
+  container's temporary directory after the first poll and quits.
+- Debug builds print each notification to stderr as it is posted.
+- `Scripts/fixture-server.py` is a fake Statuspage whose state you flip with
+  `curl`. `NSAllowsLocalNetworking` is set in Info.plist so the app can talk
+  to it over plain HTTP on 127.0.0.1.
+
+### 2.7 Debounce and notifications
 
 `VendorTracker` confirms a new state after two consecutive polls, except
 `majorOutage` which is confirmed immediately. `unknown` never confirms, never

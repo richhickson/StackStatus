@@ -37,12 +37,13 @@ done
 echo
 echo "== network (cumulative for the run, per nettop)"
 nettop -p "$PID" -P -x -J bytes_in,bytes_out -l 1 | tail -n +2
-BYTES=$(nettop -p "$PID" -P -x -J bytes_in,bytes_out -l 1 | tail -1 | awk '{print $2 + $3}')
+BYTES=$(nettop -p "$PID" -P -x -J bytes_in,bytes_out -l 1 | tail -1 | awk '{print $3 + $4}')
 echo "total bytes: ${BYTES:-?}  (x $((86400 / SECONDS_TO_RUN)) for a day at this rate)"
 echo
 echo "== process"
 ps -o pid,%cpu,%mem,rss,etime,command -p "$PID"
 echo "average %cpu over $TICKS samples: $(echo "scale=2; $CPU_SUM / $TICKS" | bc)"
-echo "resident MB: $(( $(ps -o rss= -p "$PID") / 1024 ))"
+echo "resident set MB (includes shared framework pages): $(( $(ps -o rss= -p "$PID") / 1024 ))"
+echo "physical footprint (what Activity Monitor shows as Memory): $(vmmap --summary "$PID" 2>/dev/null | grep -m1 'Physical footprint:' | awk '{print $3}')"
 echo
 echo "Energy impact: open Activity Monitor > Energy while the app runs; it is not scriptable."

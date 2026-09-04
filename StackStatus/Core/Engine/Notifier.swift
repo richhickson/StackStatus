@@ -78,7 +78,7 @@ final class Notifier: Notifying {
     private func post(_ content: Content, identifier: String) {
         guard settings.notificationsEnabled, !settings.isQuietNow(), let center else { return }
         #if DEBUG
-        print("notification: \(content.title) | \(content.body)")
+        FileHandle.standardError.write(Data("notification: \(content.title) | \(content.body)\n".utf8))
         #endif
         let notification = UNMutableNotificationContent()
         notification.title = content.title

@@ -5,10 +5,14 @@ import AppKit
 let outDir = CommandLine.arguments.count > 1 ? CommandLine.arguments[1] : "."
 let sizes: [(Int, Int)] = [(16, 1), (16, 2), (32, 1), (32, 2), (128, 1), (128, 2), (256, 1), (256, 2), (512, 1), (512, 2)]
 
-func draw(pixels: Int) -> NSImage {
-    let size = NSSize(width: pixels, height: pixels)
-    let image = NSImage(size: size)
-    image.lockFocus()
+func draw(pixels: Int) -> NSBitmapImageRep {
+    // Draw into an explicit bitmap so the pixel size does not follow the screen's scale.
+    let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: pixels, pixelsHigh: pixels, bitsPerSample: 8,
+                               samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .deviceRGB,
+                               bytesPerRow: 0, bitsPerPixel: 0)!
+    rep.size = NSSize(width: pixels, height: pixels)
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
     let s = CGFloat(pixels)
     let rect = NSRect(x: 0, y: 0, width: s, height: s).insetBy(dx: s * 0.06, dy: s * 0.06)
     let path = NSBezierPath(roundedRect: rect, xRadius: s * 0.22, yRadius: s * 0.22)
@@ -29,16 +33,14 @@ func draw(pixels: Int) -> NSImage {
         NSBezierPath(ovalIn: NSRect(x: barRect.minX, y: y, width: dot, height: dot)).fill()
         y += dot + gap
     }
-    image.unlockFocus()
-    return image
+    NSGraphicsContext.restoreGraphicsState()
+    return rep
 }
 
 var entries: [[String: String]] = []
 for (points, scale) in sizes {
     let pixels = points * scale
-    let image = draw(pixels: pixels)
-    guard let tiff = image.tiffRepresentation, let rep = NSBitmapImageRep(data: tiff) else { continue }
-    rep.size = NSSize(width: pixels, height: pixels)
+    let rep = draw(pixels: pixels)
     let png = rep.representation(using: .png, properties: [:])!
     let name = "icon_\(points)x\(points)\(scale == 2 ? "@2x" : "").png"
     try! png.write(to: URL(fileURLWithPath: outDir).appendingPathComponent(name))

@@ -20,7 +20,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
 
     /// Development aids, ignored unless set in the environment:
     /// STACKSTATUS_DEBUG_INTERVAL=<seconds> overrides the poll interval,
-    /// STACKSTATUS_DEBUG_SHOW_POPOVER=1 opens the popover after the first poll.
+    /// STACKSTATUS_DEBUG_SHOW_POPOVER=1 opens the popover after the first poll,
+    /// STACKSTATUS_DEBUG_SNAPSHOT=<file.png> renders the popover to a PNG after
+    /// the first poll and quits (used for the README screenshot).
     private static func debugAdjusted(_ poll: PollSettings) -> PollSettings {
         var poll = poll
         if let raw = ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_INTERVAL"], let seconds = TimeInterval(raw), seconds >= 1 {
@@ -78,6 +80,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
                 let scheduler = self.scheduler!
                 Task { await scheduler.update(settings: poll) }
             }
+
+        if let path = ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_SNAPSHOT"] {
+            popoverObservation = store.$hasPolled
+                .filter { $0 }
+                .first()
+                .receive(on: RunLoop.main)
+                .sink { [weak self] _ in
+                    guard let self else { return }
+                    // Give the view a moment to lay out with the fresh state.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.popoverController.writeSnapshot(to: path)
+                        NSApp.terminate(nil)
+                    }
+                }
+        }
 
         if ProcessInfo.processInfo.environment["STACKSTATUS_DEBUG_SHOW_POPOVER"] != nil {
             popoverObservation = store.$hasPolled
